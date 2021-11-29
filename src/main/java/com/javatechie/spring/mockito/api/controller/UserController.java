@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javatechie.spring.mockito.api.model.User;
 import com.javatechie.spring.mockito.api.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class UserController {
 	@Autowired
 	private UserService service;
@@ -36,6 +39,7 @@ public class UserController {
 	@DeleteMapping(value="/remove")
 	public User removeUser(@RequestBody User user) {
 		service.deleteUser(user);
+		log.info("Deleting user...");
 		return user;
 	}
 }
